@@ -1,16 +1,19 @@
-from flask import Flask, render_template
-#hi
+from flask import Flask, render_template,request,redirect,url_for,flash
 app = Flask(__name__)
 
 @app.route('/')
 def index():
   from check import all_ramen
   return render_template("index.html",all_ramen=all_ramen)
-@app.route('/change')
-def change():
+@app.route('/edit')
+def edit():
   from check import all_ramen
   return render_template("change.html",all_ramen=all_ramen)
-  
+@app.route('/change',methods = ['POST', 'GET']) 
+def change():
+  num = request.form
+  print(num)
+  return render_template("index.html")
 @app.route('/add/<name>/<num>/<type>')
 def add(name,num,type):
   import add
