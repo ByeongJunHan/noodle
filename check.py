@@ -19,7 +19,7 @@ def check_all():
     all_name = all_ramen[i][0]
     all_num = all_ramen[i][1]
     all_type = all_ramen[i][2]
-    print(all_name)
+    print("allname::"+all_name)
     print(all_num)
     print(all_type)
   threading.Timer(3, check_all).start()
@@ -32,3 +32,4 @@ def ramen_check(name_input,type_input):
     else:
         global ramen_num 
         ramen_num = double[0]
+check_all()

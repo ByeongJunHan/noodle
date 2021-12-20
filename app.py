@@ -11,8 +11,14 @@ def edit():
   return render_template("change.html",all_ramen=all_ramen)
 @app.route('/change',methods = ['POST', 'GET']) 
 def change():
-  num = request.form
-  print(num)
+  form_num = request.form
+  from check import all_ramen,all_name,all_type
+  i = len(all_ramen)
+  print(all_name)
+  all_name=all_name[i]
+  for i in range(len(all_ramen)):
+    import add
+    add.ramen_add(all_ramen[0],form_num[all_name],all_type[i])
   return render_template("index.html")
 @app.route('/add/<name>/<num>/<type>')
 def add(name,num,type):
