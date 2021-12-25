@@ -14,14 +14,12 @@ def check_all():
   global all_num
   global all_type
   all_ramen = c.fetchall()
-  print(all_ramen)
   for i in range(len(all_ramen)):
     all_name = all_ramen[i][0]
     all_num = all_ramen[i][1]
     all_type = all_ramen[i][2]
-    print("allname::"+all_name)
-    print(all_num)
-    print(all_type)
+    
+
   threading.Timer(3, check_all).start()
 check_all()
 def ramen_check(name_input,type_input):
@@ -32,4 +30,3 @@ def ramen_check(name_input,type_input):
     else:
         global ramen_num 
         ramen_num = double[0]
-check_all()
