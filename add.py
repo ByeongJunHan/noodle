@@ -4,7 +4,7 @@ def ramen_add(name_input,num_input,type_input):
     c = conn.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS table1 \
         (name text, num interger, type text)")
-    c.execute("SELECT num FROM table1 WHERE name=? AND type=?", {"Name": name_input,"Type": type_input})
+    c.execute("SELECT num FROM table1 WHERE name=? AND type=?", (name_input,type_input))
     double = c.fetchone()
     double_type = c.fetchone()
     if double == None:

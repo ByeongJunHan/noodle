@@ -4,6 +4,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
   from check import all_ramen
+  import check
+  check.check_all()
   return render_template("index.html",all_ramen=all_ramen)
 @app.route('/edit')
 def edit():
@@ -12,14 +14,19 @@ def edit():
 @app.route('/change',methods = ['POST', 'GET']) 
 def change():
   form_num = request.form
-  from check import all_ramen,all_name,all_type
-  i = len(all_ramen)
-  print(all_name)
-  all_name=all_name[i]
+  print("form_numis: "+ str(form_num))
+ 
+  from check import all_ramen
   for i in range(len(all_ramen)):
-    import add
-    add.ramen_add(all_ramen[0],form_num[all_name],all_type[i])
-  return render_template("index.html")
+    all_name = all_ramen[i][0]
+    print("all_name:"+str(all_name))
+    result = form_num[all_name]
+    if result is not "":
+      result = int(float(result))
+      print(result)
+      import add
+      add.ramen_add(all_name,result,"bongzi")
+  return redirect('/')
 @app.route('/add/<name>/<num>/<type>')
 def add(name,num,type):
   import add

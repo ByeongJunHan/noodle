@@ -20,7 +20,7 @@ def check_all():
     all_type = all_ramen[i][2]
     
 
-  threading.Timer(3, check_all).start()
+  threading.Timer(1, check_all).start()
 check_all()
 def ramen_check(name_input,type_input):
     c.execute("SELECT num FROM table1 WHERE name=:Name AND type=:Type", {"Name": name_input,"Type":type_input})
