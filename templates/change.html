@@ -11,9 +11,10 @@
   <body>
    
   {% for i in range(all_ramen | length) %}
-        <form action="/change" method="post"> <p>{{ all_ramen[i][0] }}<input type="num" name={{ all_ramen[i][0] }} placeholder={{ all_ramen[i][1] }}></p> </p> {% endfor %} <p><input type="submit" value="submit"></p> </form>
-
-  
+        <form action="/change" method="post"> <p>{{ all_ramen[i][0] }}<input type="num" name={{ all_ramen[i][0] }} placeholder={{ all_ramen[i][1] }}></p> </p>  <p><input type="submit" value="submit"></p> </form>
+		
+		<button type="button" onclick="location.href='/delete/{{ all_ramen[i][0] }}'">delete {{all_ramen[i][0]}} </button>
+{% endfor %}
   </body>
   
 </html>

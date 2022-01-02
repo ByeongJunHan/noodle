@@ -1,4 +1,5 @@
 from flask import Flask, render_template,request,redirect,url_for,flash
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,10 +16,9 @@ def edit():
 def change():
   form_num = request.form
   print("form_numis: "+ str(form_num))
- 
-  from check import all_ramen
-  for i in range(len(all_ramen)):
-    all_name = all_ramen[i][0]
+  print("len is:" + str(len(form_num)))
+  from check import all_ramen,all_name
+  for i in range(len(form_num)):
     print("all_name:"+str(all_name))
     result = form_num[all_name]
     if result is not "":
@@ -39,6 +39,10 @@ def check(name,type):
   from check import ramen_num
   print(ramen_num)
   return render_template("check.html",num = ramen_num,name = name,type=type)
-
+@app.route('/delete/<name>')
+def delete(name):
+    import delete
+    delete.ramen_delete(name)
+    return redirect('/')
 if __name__ == '__main__':
     app.run(debug=True,use_reloader=False,port='80',host='0.0.0.0')
