@@ -44,5 +44,13 @@ def delete(name):
     import delete
     delete.ramen_delete(name)
     return redirect('/')
+@app.route("/form_add",methods= ['POST','GET'])
+
+def addmore():
+    print(str(request.form))
+    form_name = request.form['name']
+    form_num = request.form['num']
+    form_type = request.form['type']
+    return redirect(url_for('add', name = form_name,num=form_num,type=form_type))
 if __name__ == '__main__':
     app.run(debug=True,use_reloader=False,port='80',host='0.0.0.0')
